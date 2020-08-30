@@ -9,11 +9,11 @@ let browser, page;
 })();
 
 module.exports = {
-	scrapSong,
+	scrapFirstVideo,
 	scrapVideos
 };
 
-async function scrapSong(query) {
+async function scrapFirstVideo(query) {
 	await page.goto(`https://www.youtube.com/results?search_query=${query}`);
 	await page.waitForSelector('#thumbnail');
 	const song = await page.evaluate(() => {

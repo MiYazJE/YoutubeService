@@ -1,17 +1,17 @@
 const youtubeScraper = require('../lib/youtubeScraper');
 
 module.exports = {
-    getSong,
+    getVideo,
     getVideos
 };
 
-async function getSong(req, res) {
+async function getVideo(req, res) {
     const { q } = req.params;
     if (!q) {
         return res.status(400).json({ msg: 'Query is empty.' });
     }
-    const song = await youtubeScraper.scrapSong(q);
-    res.json(song);
+    const video = await youtubeScraper.scrapFirstVideo(q);
+    res.json(video);
 }
 
 async function getVideos(req, res) {
